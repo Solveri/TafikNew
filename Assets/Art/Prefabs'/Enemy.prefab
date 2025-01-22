@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 9066126670388589224}
   - component: {fileID: 941188482236470439}
   - component: {fileID: 7571656523207209797}
-  - component: {fileID: -8109937824845227878}
-  m_Layer: 0
+  - component: {fileID: 6557056368625621804}
+  - component: {fileID: -2528894149066443429}
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.66, y: 8.85, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2b01bcc8b3c3fb4d90f497391b43326, type: 3}
   m_Color: {r: 0.9811321, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,11 +135,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02287bb32da0b94b984588bd0d58b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 100
-  rb: {fileID: -8109937824845227878}
+  moveSpeed: 50
+  rb: {fileID: -2528894149066443429}
   currentPathIndex: 0
   target: {fileID: 0}
---- !u!50 &-8109937824845227878
+  aI: {fileID: 0}
+--- !u!114 &6557056368625621804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5203992925575434892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13203339145d4143b77171315827219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starting_health: 5
+--- !u!50 &-2528894149066443429
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -164,4 +179,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4

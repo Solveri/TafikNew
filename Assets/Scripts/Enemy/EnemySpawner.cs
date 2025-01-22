@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    int waveNumber = 0;
+    
+   public static int waveNumber = 0;
     [SerializeField] float timeBetweenWaves = 5f;
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] Transform spawnPoint;
     [SerializeField] float timeBetweenEnemies = 3;
-    [SerializeField] int enemiesPerWave = 1;
+    [SerializeField] int enemiesPerWave = 15;
     private EnemyMovement enemyMovement;
     bool isRoundGoingOn = false;
+   public event System.Action<int> OnWaveEnded;
+   
     List<EnemyMovement> enemies = new List<EnemyMovement>();
+    private void OnEnable()
+    {
+        
+    }
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SpawnRoutine());
+        OnWaveEnded += CoinsManager.instance.CoinsOnEnd;
     }
 
     // Update is called once per frame
@@ -24,6 +32,11 @@ public class EnemySpawner : MonoBehaviour
     {
         
     }
+    public static int GetWaveCount()
+    {
+        return waveNumber;
+    }
+  
     private IEnumerator SpawnRoutine()
     {
         isRoundGoingOn = true;
@@ -40,8 +53,9 @@ public class EnemySpawner : MonoBehaviour
             }
 
             yield return new WaitForSeconds(timeBetweenWaves);
+            OnWaveEnded?.Invoke(waveNumber);
             waveNumber++;
-            enemiesPerWave += waveNumber;
+            
             if (waveNumber == 4)
             {
                 isRoundGoingOn = false;

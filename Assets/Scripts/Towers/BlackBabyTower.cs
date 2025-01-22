@@ -1,79 +1,79 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BlackBabyTower : Tower
 {
-    [SerializeField] Projectile projectile;
+    [SerializeField] private Projectile projectilePrefab;
+    private int numberOfProjectiles = 3;
+   [SerializeField] AbilityBar abilityBar;
 
-    float delayBetweenProjectile = 0.3f;
-    int numberOfProjectiles = 3;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
+        projectile = projectilePrefab;
         AttackCooldown = 3f;
+        canAttack = true;
+        hasTarget = false;
+        ability.requrieProjectileCount = 9;
+        detectionRadius = 2f;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Update()
     {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-      
-
-        if (collision.gameObject.CompareTag("Enemy") && !hasTarget)
-        {
-
-            if (collision.TryGetComponent<IDamageable>(out var damageable))
-            {
-                hasTarget = true;
-                Target = damageable;
-                
-            }
-        }
+        base.Update();
         if (hasTarget)
         {
+            if (ability.GetProjectileCount() >= 9)
+            {
+                ability.RestProjectile();
+                abilityBar.SetBar(0,ability.requrieProjectileCount,ability.GetProjectileCount());
+                ability.Activate();
+            }
+
+            Attack();
+        }
+    }
+
+    public override void Attack()
+    {
             if (canAttack)
             {
-                
-              StartCoroutine(AttackCooldownRoutine(collision.transform));
+           
+            StartCoroutine(AttackCooldownRoutine(targetTransform));
             }
-        }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent<IDamageable>(out var damageable))
-        {
-            if (damageable == Target)
+            // Check if the target is still within range
+            if (targetTransform != null && Vector2.Distance(transform.position, targetTransform.position) > detectionRadius || targetTransform == null)
             {
-               
                 Target = null;
+                targetTransform = null;
                 hasTarget = false;
             }
-
-        }
+        
     }
-    private IEnumerator AttackCooldownRoutine(Transform tarns)
+    private IEnumerator AttackCooldownRoutine(Transform target)
     {
         canAttack = false;
+
         for (int i = 0; i < numberOfProjectiles; i++)
         {
-            Projectile newProjectile = Instantiate(projectile, this.transform.position, Quaternion.identity);
-            newProjectile.SetTarget(tarns.transform);
-            yield return new WaitForSeconds(delayBetweenProjectile);
-
+            if (target != null)
+            {
+                Projectile newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
+                newProjectile.SetTarget(target,damage);
+                ability.AddProjectile();
+                abilityBar.SetBar(0, ability.requrieProjectileCount, ability.GetProjectileCount());
+            }
+            yield return new WaitForSeconds(delayBetweenProjectiles);
         }
-       
 
-        
         yield return new WaitForSeconds(AttackCooldown);
         canAttack = true;
+    }
+    private void OnDrawGizmosSelected()
+    {
+        // Draw the detection radius in the editor for visualization
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 }

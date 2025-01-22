@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour,IDamageable
+
+public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 1f;
     Vector2 Dir;
@@ -13,12 +14,13 @@ public class EnemyMovement : MonoBehaviour,IDamageable
     void Start()
     {
         target = LevelManager.instance.PathPoints[currentPathIndex];
+      
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(target.position,transform.position)<= 0.1f)
+        if (Vector2.Distance(target.position, transform.position) <= 0.3f)
         {
             currentPathIndex++;
             if (currentPathIndex < LevelManager.instance.PathPoints.Length)
@@ -26,6 +28,8 @@ public class EnemyMovement : MonoBehaviour,IDamageable
             if (currentPathIndex == LevelManager.instance.PathPoints.Length)
             {
 
+                PlayerManager.instance.TakeDamage(1f);
+                CoinsManager.instance.AddCoins(15);
                 Destroy(gameObject);
                 return;
             }
@@ -40,12 +44,9 @@ public class EnemyMovement : MonoBehaviour,IDamageable
     {
         Vector2 Direction = (target.position - transform.position).normalized;
 
-        rb.velocity = Direction * moveSpeed*Time.deltaTime;
+        rb.velocity = Direction * moveSpeed * Time.deltaTime;
     }
 
-    public void TakeDamage(float Damage)
-    {
-        Debug.Log("Got Attacked");
-    }
+
 }
 

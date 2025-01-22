@@ -3,22 +3,24 @@ using System.Collections;
 using System.Collections.Generic; 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f; // Speed of the projectile
-    [SerializeField] private float lifetime = 5f; // Time before the projectile is destroyed
-    private Transform target; // The target the projectile will move toward
+    [SerializeField] public float speed = 10f; // Speed of the projectile
+    [SerializeField] public float lifetime = 5f; // Time before the projectile is destroyed
+    protected Transform target; // The target the projectile will move toward
+   protected float damage;
 
-    public void SetTarget(Transform newTarget)
+    public void SetTarget(Transform newTarget,float damage)
     {
+        this.damage = damage;
         target = newTarget;
     }
 
     private void Start()
     {
         // Destroy the projectile after a set time if it doesn’t hit anything
-        Destroy(gameObject, lifetime);
+        //Destroy(gameObject, lifetime);
     }
 
-    private void Update()
+    public virtual void Update()
     {
         if (target == null)
         {
@@ -35,22 +37,24 @@ public class Projectile : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+   
+
+    public virtual void OnProjectileHit(GameObject collision)
     {
-        // Handle collision logic here
         if (collision.gameObject.transform == target)
         {
-            Debug.Log("Projectile hit the target: " + target.name);
+           
             collision.gameObject.TryGetComponent(out IDamageable damageable);
-            damageable?.TakeDamage(1);
-        }
-        else
-        {
-            Debug.Log("Projectile hit: " + collision.gameObject.name);
-        }
+            if (damage != 0)
+            {
+                damageable?.TakeDamage(damage);
 
-        // Destroy the projectile upon collision
-        Destroy(gameObject);
+            }
+            // Destroy the projectile upon collision
+            Destroy(gameObject);
+        }
+      
     }
+   
 }
 
