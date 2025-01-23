@@ -5,11 +5,7 @@ using UnityEngine;
 public class BlackBabyAbility : Ability
 {
    
-    public override void Activate()
-    {
-        Debug.Log("Black Baby Ability Activated");
-        //karthus e ability
-    }
+  
     // Start is called before the first frame update
     void Start()
     {

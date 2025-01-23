@@ -27,7 +27,7 @@ public class BlackBabyTower : Tower
             {
                 ability.RestProjectile();
                 abilityBar.SetBar(0,ability.requrieProjectileCount,ability.GetProjectileCount());
-                ability.Activate();
+                //ability.Activate();
             }
 
             Attack();

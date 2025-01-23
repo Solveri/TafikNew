@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 668504412183209682}
   - component: {fileID: 2436787505143308573}
   - component: {fileID: -9054501723021127621}
-  - component: {fileID: -956364437456643274}
+  - component: {fileID: -8204991760145098616}
   m_Layer: 0
   m_Name: DrunkDad
   m_TagString: Untagged
@@ -292,7 +292,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   damage: 1
-  ability: {fileID: -956364437456643274}
+  ability: {fileID: -8204991760145098616}
   projectilePrefab: {fileID: -1713666240561253124, guid: a2a2fcb82ad57eb4d8560676ee67dcc5, type: 3}
   abilityBar: {fileID: -9054501723021127621}
 --- !u!114 &-9054501723021127621
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 2956875820117810166}
   offset: {x: 0, y: -0.4, z: 0}
---- !u!114 &-956364437456643274
+--- !u!114 &-8204991760145098616
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,10 +318,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2022715610623737426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 796426bef0621d74eacdbf9fbf91405f, type: 3}
+  m_Script: {fileID: 11500000, guid: 619df81029acc7047ab804cf0a51ad12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requrieProjectileCount: 10
+  requrieProjectileCount: 0
+  IsActive: 0
+  projectile: {fileID: 3101640842101149292, guid: 5897619d5d8142841987aa49521127fa, type: 3}
 --- !u!1 &3845040293013376725
 GameObject:
   m_ObjectHideFlags: 0

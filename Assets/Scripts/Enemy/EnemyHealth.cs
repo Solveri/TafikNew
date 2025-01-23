@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour,IDamageable
 {
-    public float starting_health=10f;
+    public float starting_health=5f;
     const float healthIncrease = 5f;
     public event System.Action<float> OnDamageTaken;
     public event System.Action OnDeath;

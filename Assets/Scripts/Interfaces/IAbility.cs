@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IAbility
 {
-    void Activate();
+    void Activate(GameObject damasge);
     void Deactivate();
 }

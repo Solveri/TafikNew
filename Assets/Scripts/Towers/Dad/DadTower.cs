@@ -6,7 +6,8 @@ public class DadTower : Tower
 {
     [SerializeField] private Projectile projectilePrefab;
     [SerializeField] AbilityBar abilityBar;
-
+    bool isAttacking;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,7 @@ public class DadTower : Tower
         canAttack = true;
         hasTarget = false;
         ability.requrieProjectileCount = 10;
+        
     }
 
     // Update is called once per frame
@@ -34,13 +36,16 @@ public class DadTower : Tower
     {
         if (canAttack)
         {
-            if (ability.GetProjectileCount() >= ability.requrieProjectileCount)
+            if (ability.GetProjectileCount() >= ability.requrieProjectileCount && !isAttacking)
             {
                 ability.RestProjectile();
                 abilityBar.SetBar(0, ability.requrieProjectileCount, ability.GetProjectileCount());
-                ability.Activate();
+                ability.Activate(targetTransform.gameObject);
             }
+            else
+            {
             StartCoroutine(AttackCooldownRoutine(targetTransform));
+            }
         }
 
         // Check if the target is still within range
@@ -61,6 +66,7 @@ public class DadTower : Tower
         {
             if (target != null)
             {
+                isAttacking = true;
                 Projectile newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
                 newProjectile.SetTarget(target, damage);
                 //if the enemy is dead before all the projectiles are launched make the next projectiles next in target.
@@ -72,6 +78,7 @@ public class DadTower : Tower
         }
 
         yield return new WaitForSeconds(AttackCooldown);
+        isAttacking = false;
         canAttack = true;
     }
 }

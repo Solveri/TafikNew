@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-
-public  class Tower : MonoBehaviour,IAttackable
+//Technically should be abstract I guess but if you dont find any abstract functions then sure no foul
+public class Tower : MonoBehaviour,IAttackable
 {
+
+    //Use scriptable objects for settings, mych more easy for creating many things and you only need a refernce to the scriptable
+    //instad of holding all the data on each object
     public  float Range { get; protected set; }
     public  float Damage { get; protected set; }
     public  float AttackCooldown { get; protected set; }
+
+    //Using public is dumb just use public auto properties same thing but isnt dirty
     public bool canAttack = true;
     public bool hasTarget = false;
     public IDamageable Target;
@@ -16,7 +21,7 @@ public  class Tower : MonoBehaviour,IAttackable
     protected Projectile projectile;
     protected float detectionRadius = 5f; // Radius for detecting enemies
     public LayerMask enemyLayer; // Layer to detect enemies
-   public float damage = 3f;
+    public float damage = 3f;
     protected float delayBetweenProjectiles = 0.3f;
    
     
@@ -29,15 +34,14 @@ public  class Tower : MonoBehaviour,IAttackable
     }
     private void Awake()
     {
+        //The dumbest thing I have ever seen, just make it a serialized field, better than that as part of the scriptable object
         ability = GetComponent<Ability>();  
     }
     public virtual void Attack()
     {
-      
         OnAttack?.Invoke();
     }
     //Ability To Be Implemented
-
     void EnemyDetetcion()
     {
 

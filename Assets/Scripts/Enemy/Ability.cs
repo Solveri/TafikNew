@@ -6,7 +6,8 @@ public class Ability : MonoBehaviour,IAbility
 {
     int projectileCount;
     public int requrieProjectileCount;
-    public virtual void Activate()
+    public bool IsActive;
+    public virtual void Activate(GameObject damage)
     {
         throw new System.NotImplementedException();
     }
@@ -15,6 +16,7 @@ public class Ability : MonoBehaviour,IAbility
     {
         throw new System.NotImplementedException();
     }
+    
 
     public int GetProjectileCount()
     {
@@ -28,9 +30,5 @@ public class Ability : MonoBehaviour,IAbility
     {
         projectileCount = 0;
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

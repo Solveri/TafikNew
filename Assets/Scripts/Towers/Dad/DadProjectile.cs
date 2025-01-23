@@ -32,7 +32,7 @@ public class DadProjectile : Projectile
                 hit.transform.gameObject.TryGetComponent(out IDamageable damageable);
                 if (damage != 0)
                 {
-                    Debug.Log("Activeate");
+                    
                     damageable?.TakeDamage(damage);
 
                 }
