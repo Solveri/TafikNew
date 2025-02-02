@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rare 1
+  m_Name: Highlight
   m_Shader: {fileID: -6465566751694194690, guid: 18f29b39c3e36cf4c8a7f5adebb5f397, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
