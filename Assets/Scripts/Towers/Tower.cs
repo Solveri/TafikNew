@@ -23,7 +23,7 @@ public class Tower : MonoBehaviour,IAttackable
     public LayerMask enemyLayer; // Layer to detect enemies
     public float damage = 3f;
     protected float delayBetweenProjectiles = 0.3f;
-   
+    public Plot currentPlot;
     
     protected Transform targetTransform; // Store the target's Transform separately
     public Ability ability;
@@ -42,9 +42,8 @@ public class Tower : MonoBehaviour,IAttackable
         OnAttack?.Invoke();
     }
     //Ability To Be Implemented
-    void EnemyDetetcion()
+    private void EnemyDetetcion()
     {
-
         if (!hasTarget)
         {
             // Detect enemies within the radius

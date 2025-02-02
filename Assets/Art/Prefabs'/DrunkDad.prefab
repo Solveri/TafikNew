@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 2436787505143308573}
   - component: {fileID: -9054501723021127621}
   - component: {fileID: -8204991760145098616}
+  - component: {fileID: -700995688670366052}
   m_Layer: 0
   m_Name: DrunkDad
   m_TagString: Untagged
@@ -324,6 +325,18 @@ MonoBehaviour:
   requrieProjectileCount: 0
   IsActive: 0
   projectile: {fileID: 3101640842101149292, guid: 5897619d5d8142841987aa49521127fa, type: 3}
+--- !u!114 &-700995688670366052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022715610623737426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e36fe4351e6e7c46bfce942824914b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3845040293013376725
 GameObject:
   m_ObjectHideFlags: 0

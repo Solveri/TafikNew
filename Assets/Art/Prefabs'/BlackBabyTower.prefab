@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 3727534408719610197}
   - component: {fileID: 1589228942425220039}
   - component: {fileID: 2017581637004161694}
+  - component: {fileID: -2431004720374112078}
+  - component: {fileID: 1832179396286656698}
   m_Layer: 0
   m_Name: BlackBabyTower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,8 +108,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   damage: 3
+  currentPlot: {fileID: 0}
   ability: {fileID: 1589228942425220039}
-  projectilePrefab: {fileID: 2981853321973345376, guid: 5897619d5d8142841987aa49521127fa, type: 3}
+  projectilePrefab: {fileID: 3101640842101149292, guid: 5897619d5d8142841987aa49521127fa, type: 3}
   abilityBar: {fileID: 2017581637004161694}
 --- !u!114 &1589228942425220039
 MonoBehaviour:
@@ -122,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requrieProjectileCount: 9
+  IsActive: 0
 --- !u!114 &2017581637004161694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +140,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 1199168247121238322}
   offset: {x: 0, y: 0, z: 0}
+--- !u!114 &-2431004720374112078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567475204115567999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e36fe4351e6e7c46bfce942824914b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plotLayer:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!61 &1832179396286656698
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567475204115567999}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.8958161, y: 2.7951927}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.6388515, y: 0.2111634}
+    oldSize: {x: 6.451613, y: 9.67742}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 6.451613, y: 9.67742}
+  m_EdgeRadius: 0
 --- !u!1 &2252322527295397593
 GameObject:
   m_ObjectHideFlags: 0
