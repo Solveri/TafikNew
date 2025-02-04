@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f003e979fd6ad9a4e9086ddd9b1fa6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightColor: {r: 0, g: 1, b: 0, a: 1}
+  highlightMaterial: {fileID: 2100000, guid: e1d71d84a6e712e4fb2299f00e948931, type: 2}
 --- !u!1001 &74480564
 PrefabInstance:
   m_ObjectHideFlags: 0
