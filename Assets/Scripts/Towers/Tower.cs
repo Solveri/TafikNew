@@ -25,6 +25,7 @@ public class Tower : MonoBehaviour,IAttackable
     protected float delayBetweenProjectiles = 0.3f;
     public Plot currentPlot;
     
+    public Factions faction;    
     protected Transform targetTransform; // Store the target's Transform separately
     public Ability ability;
 
@@ -65,4 +66,9 @@ public class Tower : MonoBehaviour,IAttackable
         
     }
    
+}
+public enum Factions
+{
+    Family,
+    Enemy
 }

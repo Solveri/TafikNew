@@ -265,7 +265,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: d075c097475c3004bb94f37f9cfc275d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f9fbecc779fc25148b630cf0cab5aca7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -295,6 +295,7 @@ MonoBehaviour:
     m_Bits: 64
   damage: 1
   currentPlot: {fileID: 0}
+  faction: 0
   ability: {fileID: -8204991760145098616}
   projectilePrefab: {fileID: -1713666240561253124, guid: a2a2fcb82ad57eb4d8560676ee67dcc5, type: 3}
   abilityBar: {fileID: -9054501723021127621}
@@ -377,8 +378,8 @@ BoxCollider2D:
   m_Offset: {x: 0.31253445, y: 1.8194296}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.45200145, y: 0.25512388}
-    oldSize: {x: 5.73, y: 7.43}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10, y: 15}
     newSize: {x: 5.73, y: 7.43}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

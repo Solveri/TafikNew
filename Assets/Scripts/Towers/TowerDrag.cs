@@ -3,9 +3,10 @@ using UnityEngine;
 public class TowerDrag : MonoBehaviour
 {
     private Camera cam;
-    private GameObject selectedTower;
+    private Tower selectedTower;
     private Vector3 offset;
     private Vector3 originalPosition;
+    private GameObject towerObject;
 
     public LayerMask plotLayer;
 
@@ -27,8 +28,8 @@ public class TowerDrag : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         if (hit.collider != null && hit.collider.CompareTag("Tower"))
         {
-            selectedTower = hit.collider.gameObject;
-            originalPosition = selectedTower.transform.position;
+            selectedTower = hit.collider.gameObject.GetComponent<Tower>();
+            originalPosition = selectedTower.gameObject.transform.position;
             offset = selectedTower.transform.position - GetMouseWorldPos();
 
             // Highlight mergeable towers
@@ -50,10 +51,15 @@ public class TowerDrag : MonoBehaviour
 
                 if (existingTower != null)
                 {
-                    if (existingTower.gameObject.name == selectedTower.gameObject.name)
+                    Tower existingTowerScript = existingTower.GetComponent<Tower>();
+                    if (existingTowerScript.faction == selectedTower.faction)
                     {
+
                         Debug.Log("Merge");
-                        Destroy(selectedTower);
+                        SpriteRenderer spriteRender = existingTower.GetComponent<SpriteRenderer>();
+                        spriteRender.sprite = TowerManager.Instance.sprite;
+                        Destroy(selectedTower.gameObject);
+                       
                     }
                     else
                     {
