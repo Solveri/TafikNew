@@ -30,6 +30,9 @@ public class TowerDrag : MonoBehaviour
             selectedTower = hit.collider.gameObject;
             originalPosition = selectedTower.transform.position;
             offset = selectedTower.transform.position - GetMouseWorldPos();
+
+            // Highlight mergeable towers
+            TowerManager.Instance.HighlightMergeableTowers(selectedTower);
         }
     }
 
@@ -37,6 +40,8 @@ public class TowerDrag : MonoBehaviour
     {
         if (selectedTower != null)
         {
+            TowerManager.Instance.ClearMergeHighlights(); // Remove highlights
+
             Transform targetPlot = FindPlotAtMouseRelease();
 
             if (targetPlot != null)

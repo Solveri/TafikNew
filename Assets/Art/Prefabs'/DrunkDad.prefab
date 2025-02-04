@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: -9054501723021127621}
   - component: {fileID: -8204991760145098616}
   - component: {fileID: -700995688670366052}
+  - component: {fileID: -1136478355379772362}
   m_Layer: 0
   m_Name: DrunkDad
   m_TagString: Untagged
@@ -293,6 +294,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   damage: 1
+  currentPlot: {fileID: 0}
   ability: {fileID: -8204991760145098616}
   projectilePrefab: {fileID: -1713666240561253124, guid: a2a2fcb82ad57eb4d8560676ee67dcc5, type: 3}
   abilityBar: {fileID: -9054501723021127621}
@@ -337,6 +339,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e36fe4351e6e7c46bfce942824914b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plotLayer:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!61 &-1136478355379772362
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022715610623737426}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.31253445, y: 1.8194296}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.45200145, y: 0.25512388}
+    oldSize: {x: 5.73, y: 7.43}
+    newSize: {x: 5.73, y: 7.43}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.805005, y: 7.43}
+  m_EdgeRadius: 0
 --- !u!1 &3845040293013376725
 GameObject:
   m_ObjectHideFlags: 0
