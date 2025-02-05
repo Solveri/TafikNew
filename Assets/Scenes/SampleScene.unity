@@ -1739,11 +1739,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1668631650230099962, guid: a52c31a68d66fef4982c1af915bd6a5f, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1668631650230099962, guid: a52c31a68d66fef4982c1af915bd6a5f, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4366755911448680911, guid: a52c31a68d66fef4982c1af915bd6a5f, type: 3}
       propertyPath: m_Name
@@ -3834,6 +3834,7 @@ GameObject:
   - component: {fileID: 1600411302}
   - component: {fileID: 1600411301}
   - component: {fileID: 1600411300}
+  - component: {fileID: 1600411303}
   m_Layer: 5
   m_Name: Button (4)
   m_TagString: Untagged
@@ -3904,7 +3905,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1600411301}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1467123874}
+        m_TargetAssemblyTypeName: SelectionManager, Assembly-CSharp
+        m_MethodName: SetTower
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1600411303}
+          m_ObjectArgumentAssemblyTypeName: TowerTemplate, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1600411301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3943,6 +3956,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600411298}
   m_CullTransparentMesh: 1
+--- !u!114 &1600411303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600411298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be45f973344fc294d8f080402786db4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tower: {fileID: -73873659799966275, guid: 56b7a16191eda2540b224edb75d51f0b, type: 3}
+  button: {fileID: 0}
+  Image: {fileID: 0}
 --- !u!1 &1614748717
 GameObject:
   m_ObjectHideFlags: 0
@@ -5053,10 +5081,6 @@ PrefabInstance:
     - target: {fileID: 4366755911448680911, guid: a52c31a68d66fef4982c1af915bd6a5f, type: 3}
       propertyPath: m_Name
       value: Plots (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4366755911448680911, guid: a52c31a68d66fef4982c1af915bd6a5f, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6656030627374212391, guid: a52c31a68d66fef4982c1af915bd6a5f, type: 3}
       propertyPath: m_LocalPosition.x

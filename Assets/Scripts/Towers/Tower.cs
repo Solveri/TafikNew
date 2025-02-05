@@ -31,7 +31,12 @@ public class Tower : MonoBehaviour, IAttackable
 
     public virtual void Update()
     {
-        DetectEnemies();
+        // If target is null or out of range, find a new target
+        if (Target == null || !IsTargetInRange())
+        {
+            Target = null; // Reset target
+            DetectEnemies();
+        }
     }
 
     public virtual void Attack()
@@ -65,6 +70,16 @@ public class Tower : MonoBehaviour, IAttackable
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// Checks if the current target is still within range.
+    /// If the target is destroyed or moved out of range, return false.
+    /// </summary>
+    private bool IsTargetInRange()
+    {
+        if (targetTransform == null) return false; // Target was destroyed
+        return Vector2.Distance(transform.position, targetTransform.position) <= detectionRadius;
     }
 
     private void OnDrawGizmosSelected()
