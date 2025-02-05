@@ -43,6 +43,7 @@ public class TowerDrag : MonoBehaviour
         {
             TowerManager.Instance.ClearMergeHighlights(); // Remove highlights
 
+            // should use the plot itself to find the tower 
             Transform targetPlot = FindPlotAtMouseRelease();
 
             if (targetPlot != null)

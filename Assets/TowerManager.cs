@@ -15,6 +15,7 @@ public class TowerManager : MonoBehaviour
 
     public void HighlightMergeableTowers(Tower selectedTower)
     {
+        // should hold a list of all active towers in Game and then itrate it to find the towers that can be merged
         originalMaterials.Clear();
         //FAST REFACTOR TOMMAROW
         foreach (GameObject tower in GameObject.FindGameObjectsWithTag("Tower"))

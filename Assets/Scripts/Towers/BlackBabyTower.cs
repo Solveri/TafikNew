@@ -13,7 +13,7 @@ public class BlackBabyTower : Tower
         projectile = projectilePrefab;
         AttackCooldown = 3f;
         canAttack = true;
-        hasTarget = false;
+        
         ability.requrieProjectileCount = 9;
         detectionRadius = 2f;
     }
@@ -21,7 +21,7 @@ public class BlackBabyTower : Tower
     public override void Update()
     {
         base.Update();
-        if (hasTarget)
+        if (Target!= null)
         {
             if (ability.GetProjectileCount() >= 9)
             {
@@ -47,7 +47,7 @@ public class BlackBabyTower : Tower
             {
                 Target = null;
                 targetTransform = null;
-                hasTarget = false;
+               
             }
         
     }

@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class Plot : MonoBehaviour
 {
     public bool isOccupid;
+    public Tower ocuupier;
 
     public static event System.Action<Plot> OnPlotClicked;
    

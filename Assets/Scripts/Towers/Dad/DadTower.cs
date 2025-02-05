@@ -15,7 +15,7 @@ public class DadTower : Tower
         projectile = projectilePrefab;
         AttackCooldown = 1f;
         canAttack = true;
-        hasTarget = false;
+       
         ability.requrieProjectileCount = 10;
         
     }
@@ -25,7 +25,7 @@ public class DadTower : Tower
     public override void Update()
     {
         base.Update();
-        if (hasTarget)
+        if (Target != null)
         {
             Attack();
         }
@@ -53,7 +53,7 @@ public class DadTower : Tower
         {
             Target = null;
             targetTransform = null;
-            hasTarget = false;
+           
         }
        
 
