@@ -4,9 +4,12 @@ using UnityEngine.UI;
 
 public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Transform parentAfterDrag;
+    public Transform parentAfterDrag;
+    public Transform parentBeforeDrag;
     public Image image;
     private CanvasGroup canvasGroup;
+    public Slot currentSlot;
+    public Slot prevSlot;
 
     private void Awake()
     {
@@ -18,6 +21,9 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        prevSlot = currentSlot;
+        currentSlot = null;
+        parentBeforeDrag = transform.parent;
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root); // Move to top layer while dragging
         transform.SetAsLastSibling();
@@ -31,7 +37,17 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (parentBeforeDrag != parentAfterDrag)
+        {
+            prevSlot.SetEmpty(true);
+            prevSlot.AssignImage(null);
+        }
+        else
+        {
+            currentSlot = prevSlot;
+        }
         transform.SetParent(parentAfterDrag); // Return to original or new parent
+        transform.position = parentAfterDrag.position;
         canvasGroup.blocksRaycasts = true; // Enable raycasts again
     }
 }

@@ -3440,7 +3440,7 @@ MonoBehaviour:
   - {fileID: 470304366}
   - {fileID: 1534892689}
   - {fileID: 1061602733}
-  towerOptions: {fileID: 2376140405288334334, guid: 393df603eac08cc4d8e910a912bc0f58, type: 3}
+  towerPrefab: {fileID: 2376140405288334334, guid: 393df603eac08cc4d8e910a912bc0f58, type: 3}
 --- !u!114 &1214475804 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4776329705429525551, guid: 09b9fbe685e4ff24d96009c4cac9e8de, type: 3}

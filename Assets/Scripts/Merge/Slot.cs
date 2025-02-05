@@ -5,18 +5,21 @@ using UnityEngine.UI;
 public class Slot : MonoBehaviour, IDropHandler
 {
     public bool IsEmpty { get; private set; } = true;
-    private Image slotImage;
+    [SerializeField] DraggableImage slotImage;
 
     private void Awake()
     {
-        slotImage = GetComponentInChildren<Image>(); // Find an image inside the slot
+       
     }
 
     public void SetEmpty(bool empty)
     {
         IsEmpty = empty;
     }
-
+    public void AssignImage(DraggableImage image)
+    {
+        slotImage = image;
+    }
     public void OnDrop(PointerEventData eventData)
     {
         DraggableImage droppedImage = eventData.pointerDrag.GetComponent<DraggableImage>();
@@ -28,25 +31,32 @@ public class Slot : MonoBehaviour, IDropHandler
             if (IsEmpty)
             {
                 // Place the new image in this slot
+                droppedImage.parentAfterDrag = transform;
                 droppedImage.transform.SetParent(transform);
                 droppedImage.transform.localPosition = Vector3.zero;
-                slotImage = draggedImage;
+                slotImage = droppedImage;
+                droppedImage.currentSlot = this;
                 SetEmpty(false);
             }
-            else if (slotImage.sprite == draggedImage.sprite)
+            else if (slotImage.image.sprite == draggedImage.sprite)
             {
                 // If both images are identical, merge them
-                MergeImages(droppedImage.gameObject);
+                MergeImages(droppedImage);
             }
+        }
+        else
+        {
+            Debug.Log("HEYO");
         }
     }
 
-    private void MergeImages(GameObject draggedObject)
+    private void MergeImages(DraggableImage draggedObject)
     {
-        Destroy(draggedObject); // Remove the duplicate image
+        draggedObject.prevSlot.SetEmpty(true); // Mark the previous slot as empty
+        Destroy(draggedObject.gameObject); // Remove the duplicate image
 
         // Example: Upgrade the tower image (replace with your logic)
-        slotImage.sprite = GetNextLevelSprite(slotImage.sprite);
+        slotImage.image.sprite = GetNextLevelSprite(slotImage.image.sprite);
     }
 
     private Sprite GetNextLevelSprite(Sprite currentSprite)
