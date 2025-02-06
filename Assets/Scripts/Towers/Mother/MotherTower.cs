@@ -83,7 +83,7 @@ public class MotherTower : Tower
 
     private void UpdateBeam()
     {
-        if (beamObject != null)
+        if (beamObject != null && Target != null)
         {// Activate the beam
             beamObject.SetActive(true);
 

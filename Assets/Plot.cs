@@ -7,11 +7,18 @@ public class Plot : MonoBehaviour
     public bool isOccupied;
     public Tower occupier;
 
+    public SpriteRenderer spriteRenderer;
+
     public static event System.Action<Plot> OnPlotClicked;
 
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        isOccupied = false;
+    }
     private void Start()
     {
-        isOccupied = false;
+      
     }
 
     private void OnMouseDown()
@@ -22,8 +29,10 @@ public class Plot : MonoBehaviour
         // Place a tower on click if it's empty and player has enough coins
         if (!isOccupied && CoinsManager.instance.Coins >= 30)
         {
-            PlaceTower(SelectionManager.Instance.SelectedTower);
-            CoinsManager.instance.RemoveCoins(30);
+          
+           
+            
+
         }
         else if (isOccupied)
         {

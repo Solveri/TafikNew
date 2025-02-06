@@ -44,10 +44,6 @@ public class Slot : MonoBehaviour, IDropHandler
                 MergeImages(droppedImage);
             }
         }
-        else
-        {
-            Debug.Log("HEYO");
-        }
     }
 
     private void MergeImages(DraggableImage draggedObject)
