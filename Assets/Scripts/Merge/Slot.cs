@@ -43,7 +43,9 @@ public class Slot : MonoBehaviour, IDropHandler
                 // If both images are identical, merge them
                 MergeImages(droppedImage);
             }
+
         }
+        LevelManager.instance.isHoldingImage = false;
     }
 
     private void MergeImages(DraggableImage draggedObject)
