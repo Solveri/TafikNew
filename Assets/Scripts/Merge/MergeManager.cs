@@ -10,21 +10,31 @@ public class MergeManager : MonoBehaviour
 
     public void SpawnTower()
     {
-        foreach (Slot slot in MergeSlots)
+      
+        if (CoinsManager.instance.Coins>= 30)
         {
-            if (slot.IsEmpty)
+            CoinsManager.instance.RemoveCoins(30);
+            foreach (Slot slot in MergeSlots)
             {
-                // Instantiate the draggable tower
+                if (slot.IsEmpty)
+                {
+                    // Instantiate the draggable tower
 
-                DraggableImage newTower = Instantiate(draggableImages[Random.Range(0,draggableImages.Count)], slot.transform);
-                newTower.transform.localPosition = Vector3.zero; // Center it in the slot
-                slot.AssignImage(newTower);
-                newTower.currentSlot = slot;
-                // Mark the slot as occupied
-                slot.SetEmpty(false);
-                break;
+                    DraggableImage newTower = Instantiate(draggableImages[Random.Range(0, draggableImages.Count)], slot.transform);
+                    newTower.transform.localPosition = Vector3.zero; // Center it in the slot
+                    slot.AssignImage(newTower);
+                    newTower.currentSlot = slot;
+                    // Mark the slot as occupied
+                    slot.SetEmpty(false);
+                    break;
+                }
             }
         }
+        else
+        {
+            Debug.Log("Not enough coins!");
+        }
+
     }
 }
 

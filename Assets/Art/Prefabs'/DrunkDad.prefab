@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAttack: 1
-  hasTarget: 0
+  detectionRadius: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022715610623737426}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e36fe4351e6e7c46bfce942824914b2, type: 3}
   m_Name: 
@@ -378,8 +378,8 @@ BoxCollider2D:
   m_Offset: {x: 0.31253445, y: 1.8194296}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10, y: 15}
+    pivot: {x: 0.438606, y: 0.27850005}
+    oldSize: {x: 8, y: 12}
     newSize: {x: 5.73, y: 7.43}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
