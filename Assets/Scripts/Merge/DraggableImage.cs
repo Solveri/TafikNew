@@ -28,6 +28,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root); // Move to top layer while dragging
         transform.SetAsLastSibling();
+        LevelManager.instance.ShowSlots(true);
         canvasGroup.blocksRaycasts = false; // Allow raycast to pass through while dragging
     }
 
@@ -55,7 +56,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                 prevSlot.SetEmpty(true);
                 prevSlot = null;
                 // Remove the draggable UI image
-
+                LevelManager.instance.ShowSlots(false);
                 return;
             }
         }
@@ -76,6 +77,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         transform.SetParent(parentAfterDrag); // Return to original or new parent
         transform.position = parentAfterDrag.position;
+        LevelManager.instance.ShowSlots(false);
         canvasGroup.blocksRaycasts = true; // Enable raycasts again
     }
 }
