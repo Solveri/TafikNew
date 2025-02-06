@@ -93,3 +93,4 @@ MonoBehaviour:
   image: {fileID: 8645283594435515691}
   currentSlot: {fileID: 0}
   prevSlot: {fileID: 0}
+  Tower: {fileID: 2436787505143308573, guid: eef27b812b69bbd40bbf0b878d015f62, type: 3}

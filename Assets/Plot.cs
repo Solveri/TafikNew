@@ -1,48 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Plot : MonoBehaviour
 {
-    public bool isOccupid;
-    public Tower ocuupier;
+    public bool isOccupied;
+    public Tower occupier;
 
     public static event System.Action<Plot> OnPlotClicked;
-   
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        isOccupid = false;
+        isOccupied = false;
     }
+
     private void OnMouseDown()
     {
-        Debug.Log("This has been clicked");
+        Debug.Log("This plot has been clicked");
         OnPlotClicked?.Invoke(this);
-        //need to move it to the SelectionManager
-        if (!isOccupid)
-        {
-            if(CoinsManager.instance.Coins >= 30)
-            {
-                isOccupid = true;
-                Instantiate(SelectionManager.Instance.SelectedTower, transform.position, Quaternion.identity).transform.SetParent(this.transform);
-                CoinsManager.instance.RemoveCoins(30);
 
-            }
-            else
-            {
-                Debug.Log("Doesn't have enough money");
-            }
+        // Place a tower on click if it's empty and player has enough coins
+        if (!isOccupied && CoinsManager.instance.Coins >= 30)
+        {
+            PlaceTower(SelectionManager.Instance.SelectedTower);
+            CoinsManager.instance.RemoveCoins(30);
+        }
+        else if (isOccupied)
+        {
+            Debug.Log("Plot is already occupied");
+        }
+        else
+        {
+            Debug.Log("Not enough coins!");
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlaceTower(Tower towerPrefab)
     {
-        
+        if (isOccupied) return; // Prevent placing multiple towers
+
+        isOccupied = true;
+        Tower newTower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
+        newTower.transform.SetParent(this.transform);
+        occupier = newTower;
     }
 }

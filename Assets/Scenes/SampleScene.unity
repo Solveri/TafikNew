@@ -3282,37 +3282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6c9a271affb704da5e91218be25c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1123148059
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1123148060}
-  m_Layer: 0
-  m_Name: GridObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1123148060
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1123148059}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1131473551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3440,7 +3409,10 @@ MonoBehaviour:
   - {fileID: 470304366}
   - {fileID: 1534892689}
   - {fileID: 1061602733}
-  towerPrefab: {fileID: 2376140405288334334, guid: 393df603eac08cc4d8e910a912bc0f58, type: 3}
+  draggableImages:
+  - {fileID: 2376140405288334334, guid: 393df603eac08cc4d8e910a912bc0f58, type: 3}
+  - {fileID: 2376140405288334334, guid: dead3ed288729994aa3fd618e8f211ec, type: 3}
+  - {fileID: 2376140405288334334, guid: cdcdbcdc7e6d87c4c971d21baa74e231, type: 3}
 --- !u!114 &1214475804 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4776329705429525551, guid: 09b9fbe685e4ff24d96009c4cac9e8de, type: 3}
@@ -6395,7 +6367,6 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 357906185}
   - {fileID: 1614748718}
-  - {fileID: 1123148060}
   - {fileID: 101805701}
   - {fileID: 384881723}
   - {fileID: 1662582245}
