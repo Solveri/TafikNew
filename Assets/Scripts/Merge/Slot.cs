@@ -24,7 +24,7 @@ public class Slot : MonoBehaviour, IDropHandler
     {
         DraggableImage droppedImage = eventData.pointerDrag.GetComponent<DraggableImage>();
 
-        if (droppedImage != null)
+        if (droppedImage != null && droppedImage != slotImage)
         {
             Image draggedImage = droppedImage.GetComponent<Image>();
 
