@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3101549719319742891}
   - component: {fileID: 8645283594435515691}
   - component: {fileID: 2376140405288334334}
+  - component: {fileID: -8026042429266300888}
   m_Layer: 5
   m_Name: Dad
   m_TagString: Untagged
@@ -94,3 +95,17 @@ MonoBehaviour:
   currentSlot: {fileID: 0}
   prevSlot: {fileID: 0}
   Tower: {fileID: 2436787505143308573, guid: eef27b812b69bbd40bbf0b878d015f62, type: 3}
+  starScript: {fileID: 0}
+--- !u!114 &-8026042429266300888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5669523421693033272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 725013c2caa9f2843866496fb2a9b63c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StarLevel: 0
