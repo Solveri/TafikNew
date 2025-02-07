@@ -19,7 +19,7 @@ public class MotherTower : Tower
     void Start()
     {
         projectile = projectilePrefab;
-        AttackCooldown = 3f;
+        this.BaseAttackCooldown = 3f;
         canAttack = true;
 
         ability.requrieProjectileCount = 10;

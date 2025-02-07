@@ -297,6 +297,7 @@ MonoBehaviour:
   currentPlot: {fileID: 0}
   faction: 0
   ability: {fileID: -8204991760145098616}
+  star: {fileID: 0}
   projectilePrefab: {fileID: -1713666240561253124, guid: a2a2fcb82ad57eb4d8560676ee67dcc5, type: 3}
   abilityBar: {fileID: -9054501723021127621}
 --- !u!114 &-9054501723021127621

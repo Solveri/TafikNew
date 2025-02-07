@@ -13,7 +13,7 @@ public class DadTower : Tower
     void Start()
     {
         projectile = projectilePrefab;
-        AttackCooldown = 1f;
+        this.BaseAttackCooldown = 1f;
         canAttack = true;
        
         ability.requrieProjectileCount = 10;
@@ -68,7 +68,7 @@ public class DadTower : Tower
             {
                 isAttacking = true;
                 Projectile newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
-                newProjectile.SetTarget(target, damage);
+                newProjectile.SetTarget(target, this.Damage);
                 //if the enemy is dead before all the projectiles are launched make the next projectiles next in target.
                 ability.AddProjectile();
                 abilityBar.SetBar(0, ability.requrieProjectileCount, ability.GetProjectileCount());

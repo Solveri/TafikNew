@@ -21,7 +21,7 @@ public class CoinsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Coins = 75;
+        Coins = 500;
     }
 
     // Update is called once per frame

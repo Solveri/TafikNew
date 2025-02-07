@@ -11,6 +11,9 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public Slot currentSlot;
     public Slot prevSlot;
     public Tower Tower;
+    public StarScript starScript;
+  
+
 
     private void Awake()
     {
@@ -18,6 +21,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         canvasGroup = GetComponent<CanvasGroup>();
         if (canvasGroup == null)
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
+       
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -51,13 +55,16 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             if (plot != null && !plot.isOccupied)
             {
                 // Place a tower on the detected Plot
-                plot.PlaceTower(Tower);
-                Destroy(gameObject);
-                Tower.currentPlot = plot;
+              Tower newTower = plot.PlaceTower(Tower);
+                
+               newTower.currentPlot = plot;
+                newTower.StarLevel = starScript.StarLevel;
+                newTower.ApplyStarStats();
                 prevSlot.SetEmpty(true);
                 prevSlot = null;
                 // Remove the draggable UI image
                 LevelManager.instance.isHoldingImage = false;
+                Destroy(gameObject);
                 return;
             }
         }
@@ -81,4 +88,5 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         LevelManager.instance.isHoldingImage = false;
         canvasGroup.blocksRaycasts = true; // Enable raycasts again
     }
+    
 }
