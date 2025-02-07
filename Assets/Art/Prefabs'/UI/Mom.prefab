@@ -95,7 +95,7 @@ MonoBehaviour:
   currentSlot: {fileID: 0}
   prevSlot: {fileID: 0}
   Tower: {fileID: -73873659799966275, guid: 56b7a16191eda2540b224edb75d51f0b, type: 3}
-  starScript: {fileID: 0}
+  starScript: {fileID: 364258890903955783}
 --- !u!114 &364258890903955783
 MonoBehaviour:
   m_ObjectHideFlags: 0

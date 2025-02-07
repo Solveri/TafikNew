@@ -3678,6 +3678,8 @@ MonoBehaviour:
   - {fileID: 1061602733}
   draggableImages:
   - {fileID: 2376140405288334334, guid: 393df603eac08cc4d8e910a912bc0f58, type: 3}
+  - {fileID: 2376140405288334334, guid: dead3ed288729994aa3fd618e8f211ec, type: 3}
+  - {fileID: 2376140405288334334, guid: cdcdbcdc7e6d87c4c971d21baa74e231, type: 3}
 --- !u!114 &1214475804 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4776329705429525551, guid: 09b9fbe685e4ff24d96009c4cac9e8de, type: 3}
