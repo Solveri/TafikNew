@@ -11,7 +11,7 @@ public class BlackBabyTower : Tower
     private void Start()
     {
         projectile = projectilePrefab;
-        AttackCooldown = 3f;
+        this.BaseAttackCooldown = 3f;
         canAttack = true;
         
         ability.requrieProjectileCount = 9;
@@ -21,6 +21,7 @@ public class BlackBabyTower : Tower
     public override void Update()
     {
         base.Update();
+       
         if (Target!= null)
         {
             if (ability.GetProjectileCount() >= 9)
@@ -60,7 +61,7 @@ public class BlackBabyTower : Tower
             if (target != null)
             {
                 Projectile newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
-                newProjectile.SetTarget(target,damage);
+                newProjectile.SetTarget(target,this.Damage);
                 ability.AddProjectile();
                 abilityBar.SetBar(0, ability.requrieProjectileCount, ability.GetProjectileCount());
             }

@@ -186,6 +186,7 @@ MonoBehaviour:
   currentPlot: {fileID: 0}
   faction: 0
   ability: {fileID: 9096698093213754933}
+  star: {fileID: 0}
   projectilePrefab: {fileID: 0}
   abilityBar: {fileID: 2017581637004161694}
   beamObject: {fileID: 2469300235388775467, guid: 4c9b587f35948a445853b933cfdec366, type: 3}

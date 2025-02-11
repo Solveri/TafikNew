@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI; // Required for UI Images
 
@@ -24,6 +25,7 @@ public class MergeManager : MonoBehaviour
                     newTower.transform.localPosition = Vector3.zero; // Center it in the slot
                     slot.AssignImage(newTower);
                     newTower.currentSlot = slot;
+                  
                     // Mark the slot as occupied
                     slot.SetEmpty(false);
                     break;

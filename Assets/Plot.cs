@@ -58,13 +58,13 @@ public class Plot : MonoBehaviour
         }
     }
 
-    public void PlaceTower(Tower towerPrefab)
+    public Tower PlaceTower(Tower towerPrefab)
     {
-        if (isOccupied) return; // Prevent placing multiple towers
         spriteRenderer.enabled = true;
         isOccupied = true;
         Tower newTower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
         newTower.transform.SetParent(this.transform);
         occupier = newTower;
+        return newTower;
     }
 }

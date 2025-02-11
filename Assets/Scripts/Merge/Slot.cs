@@ -38,28 +38,13 @@ public class Slot : MonoBehaviour, IDropHandler
                 droppedImage.currentSlot = this;
                 SetEmpty(false);
             }
-            else if (slotImage.image.sprite == draggedImage.sprite)
+            else if (slotImage.starScript.TryMergeTowers(droppedImage.starScript))
             {
-                // If both images are identical, merge them
-                MergeImages(droppedImage);
+                droppedImage.prevSlot.SetEmpty(true); // Mark the previous slot as empty
+                Destroy(droppedImage.gameObject); // Destroy the dragged image
             }
 
         }
         LevelManager.instance.isHoldingImage = false;
-    }
-
-    private void MergeImages(DraggableImage draggedObject)
-    {
-        draggedObject.prevSlot.SetEmpty(true); // Mark the previous slot as empty
-        Destroy(draggedObject.gameObject); // Remove the duplicate image
-
-        // Example: Upgrade the tower image (replace with your logic)
-        slotImage.image.sprite = GetNextLevelSprite(slotImage.image.sprite);
-    }
-
-    private Sprite GetNextLevelSprite(Sprite currentSprite)
-    {
-        // Add your merging/upgrade logic here (returning the same sprite for now)
-        return currentSprite;
     }
 }
