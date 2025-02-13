@@ -21,6 +21,7 @@ public class Tower : MonoBehaviour, IAttackable
     protected Projectile projectile;
     [SerializeField] protected float detectionRadius = 5f;
     [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] SpriteRenderer spriteRenderer;
 
     protected float delayBetweenProjectiles = 0.3f;
     public Plot currentPlot;

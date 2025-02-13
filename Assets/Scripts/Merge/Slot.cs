@@ -46,5 +46,18 @@ public class Slot : MonoBehaviour, IDropHandler
 
         }
         LevelManager.instance.isHoldingImage = false;
+
+        switch (slotImage.starScript.StarLevel)
+        {
+            case 2:
+                slotImage.image.color = new Color(139, 0, 255);
+                break;
+            case 3:
+                slotImage.image.color = new Color(233, 255, 0);
+                break;
+            default:
+                slotImage.image.color = Color.white;
+                break;
+        }
     }
 }

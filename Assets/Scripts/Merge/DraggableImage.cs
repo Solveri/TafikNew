@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -64,6 +65,20 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                 prevSlot = null;
                 // Remove the draggable UI image
                 LevelManager.instance.isHoldingImage = false;
+                SpriteRenderer sr = newTower.GetComponent<SpriteRenderer>();
+                switch (newTower.StarLevel)
+                {
+                    case 2:
+                       sr.color = new Color(139, 0, 255);
+                        break;
+                    case 3:
+                        sr.color = new Color(233, 255, 0);
+                        break;
+                    default:
+                        sr.color = Color.white;
+                        break;
+                }
+
                 Destroy(gameObject);
                 return;
             }
@@ -87,6 +102,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         transform.position = parentAfterDrag.position;
         LevelManager.instance.isHoldingImage = false;
         canvasGroup.blocksRaycasts = true; // Enable raycasts again
+       
     }
     
 }

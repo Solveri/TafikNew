@@ -45,4 +45,23 @@ public class CoinsManager : MonoBehaviour
         Coins -= amount;
         OnCoinsChanged?.Invoke(Coins);
     }
+    public void SellTower(Tower tower)
+    {
+        if(tower != null)
+        {
+            tower.currentPlot.occupier = null;
+            switch (tower.StarLevel)
+            {
+                    case 1:
+                    AddCoins(15); break;
+                    case 2:
+                    AddCoins(30); break;
+                    case 3:
+                    AddCoins(60); break;
+                default:
+                    break;
+            }
+
+        }
+    }
 }

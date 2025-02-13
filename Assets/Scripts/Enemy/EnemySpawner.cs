@@ -56,7 +56,7 @@ public class EnemySpawner : MonoBehaviour
             OnWaveEnded?.Invoke(waveNumber);
             waveNumber++;
             
-            if (waveNumber == 4)
+            if (waveNumber == 10)
             {
                 isRoundGoingOn = false;
                 yield return null;
