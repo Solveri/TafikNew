@@ -22,6 +22,10 @@ public class Projectile : MonoBehaviour
 
     public virtual void Update()
     {
+        if (GameManager.Instance.isGamePasued)
+        {
+            return;
+        }
         if (target == null)
         {
             // Destroy the projectile if the target is missing

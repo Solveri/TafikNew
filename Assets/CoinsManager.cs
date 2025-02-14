@@ -50,6 +50,8 @@ public class CoinsManager : MonoBehaviour
         if(tower != null)
         {
             tower.currentPlot.occupier = null;
+            tower.currentPlot.isOccupied = false;
+            Destroy(tower.gameObject);
             switch (tower.StarLevel)
             {
                     case 1:
@@ -63,5 +65,6 @@ public class CoinsManager : MonoBehaviour
             }
 
         }
+        
     }
 }

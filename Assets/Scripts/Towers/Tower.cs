@@ -41,6 +41,10 @@ public class Tower : MonoBehaviour, IAttackable
     }
     public virtual void Update()
     {
+        if (GameManager.Instance.isGamePasued)
+        {
+            return;
+        }
         if (Target == null || !IsTargetInRange())
         {
             Target = null;

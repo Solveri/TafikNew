@@ -20,6 +20,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      
         if (Vector2.Distance(target.position, transform.position) <= 0.3f)
         {
             currentPathIndex++;
@@ -42,6 +43,11 @@ public class EnemyMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (GameManager.Instance.isGamePasued)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
         Vector2 Direction = (target.position - transform.position).normalized;
 
         rb.velocity = Direction * moveSpeed * Time.deltaTime;

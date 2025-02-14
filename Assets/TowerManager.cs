@@ -13,43 +13,62 @@ public class TowerManager : MonoBehaviour
         if (Instance == null) Instance = this;
     }
 
+    /// <summary>
+    /// Highlights all mergeable towers of the same faction.
+    /// </summary>
     public void HighlightMergeableTowers(Tower selectedTower)
     {
-        // should hold a list of all active towers in Game and then itrate it to find the towers that can be merged
         originalMaterials.Clear();
-        //FAST REFACTOR TOMMAROW
+
         foreach (GameObject tower in GameObject.FindGameObjectsWithTag("Tower"))
         {
-            if (tower != selectedTower)
+            if (tower != selectedTower && tower.TryGetComponent(out Tower currentTower))
             {
-                if (tower.TryGetComponent(out Tower currentTower))
+                if (currentTower.faction == selectedTower.faction)
                 {
-                    if (currentTower.faction == selectedTower.faction )
-                    {
-                        SpriteRenderer sr = tower.GetComponent<SpriteRenderer>();
-                        if (sr != null)
-                        {
-                            originalMaterials[tower] = sr.material;
-                            sr.material = highlightMaterial;
-                        }
-                    }
+                    ApplyGlowEffect(tower);
                 }
-                
             }
         }
     }
 
+    /// <summary>
+    /// Applies a glow effect to a specific tower.
+    /// </summary>
+    public void ApplyGlowEffect(GameObject tower)
+    {
+        if (tower.TryGetComponent(out SpriteRenderer sr))
+        {
+            if (!originalMaterials.ContainsKey(tower))
+            {
+                originalMaterials[tower] = sr.material; // Store original material
+            }
+            sr.material = highlightMaterial; // Apply glow effect
+        }
+    }
+
+    /// <summary>
+    /// Removes the glow effect from a specific tower.
+    /// </summary>
+    public void RemoveGlowEffect(GameObject tower)
+    {
+        if (tower.TryGetComponent(out SpriteRenderer sr) && originalMaterials.ContainsKey(tower))
+        {
+            sr.material = originalMaterials[tower]; // Restore original material
+            originalMaterials.Remove(tower);
+        }
+    }
+
+    /// <summary>
+    /// Clears all highlighted towers.
+    /// </summary>
     public void ClearMergeHighlights()
     {
         foreach (var pair in originalMaterials)
         {
-            if (pair.Key != null)
+            if (pair.Key != null && pair.Key.TryGetComponent(out SpriteRenderer sr))
             {
-                SpriteRenderer sr = pair.Key.GetComponent<SpriteRenderer>();
-                if (sr != null)
-                {
-                    sr.material = pair.Value; // Restore original material
-                }
+                sr.material = pair.Value; // Restore original material
             }
         }
         originalMaterials.Clear();

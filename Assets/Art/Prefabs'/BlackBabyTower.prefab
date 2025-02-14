@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1832179396286656698}
   m_Layer: 0
   m_Name: BlackBabyTower
-  m_TagString: Tower
+  m_TagString: Baby
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,11 +107,11 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  damage: 3
+  spriteRenderer: {fileID: 0}
   currentPlot: {fileID: 0}
   faction: 0
   ability: {fileID: 1589228942425220039}
-  star: {fileID: 0}
+  StarLevel: 1
   projectilePrefab: {fileID: 3101640842101149292, guid: 5897619d5d8142841987aa49521127fa, type: 3}
   abilityBar: {fileID: 2017581637004161694}
 --- !u!114 &1589228942425220039
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567475204115567999}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e36fe4351e6e7c46bfce942824914b2, type: 3}
   m_Name: 
@@ -189,7 +189,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.8958161, y: 2.7951927}
+  m_Offset: {x: -0.8958161, y: 4.6020527}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.6388515, y: 0.2111634}
@@ -200,7 +200,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.451613, y: 9.67742}
+  m_Size: {x: 6.451613, y: 6.0636997}
   m_EdgeRadius: 0
 --- !u!1 &2252322527295397593
 GameObject:

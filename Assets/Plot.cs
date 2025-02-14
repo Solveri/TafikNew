@@ -18,7 +18,7 @@ public class Plot : MonoBehaviour
     }
     private void Start()
     {
-      
+      SelectionManager.Instance.SelectionChanged += OnPlotClicked;
     }
     private void Update()
     {
@@ -39,25 +39,17 @@ public class Plot : MonoBehaviour
     {
         Debug.Log("This plot has been clicked");
         OnPlotClicked?.Invoke(this);
-
-        // Place a tower on click if it's empty and player has enough coins
-        if (!isOccupied && CoinsManager.instance.Coins >= 30)
-        {
-          
-           
-            
-
-        }
-        else if (isOccupied)
+        if (isOccupied)
         {
             Debug.Log("Plot is already occupied");
         }
-        else
-        {
-            Debug.Log("Not enough coins!");
-        }
+       
     }
-
+    public void RestPlot()
+    {
+        isOccupied = false;
+        occupier = null;
+    }
     public Tower PlaceTower(Tower towerPrefab)
     {
         spriteRenderer.enabled = true;

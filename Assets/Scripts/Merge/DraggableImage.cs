@@ -65,6 +65,7 @@ public class DraggableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                 prevSlot = null;
                 // Remove the draggable UI image
                 LevelManager.instance.isHoldingImage = false;
+                //make a function and move it to merge Script
                 SpriteRenderer sr = newTower.GetComponent<SpriteRenderer>();
                 switch (newTower.StarLevel)
                 {

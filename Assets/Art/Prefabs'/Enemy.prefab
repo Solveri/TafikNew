@@ -139,7 +139,6 @@ MonoBehaviour:
   rb: {fileID: -2528894149066443429}
   currentPathIndex: 0
   target: {fileID: 0}
-  aI: {fileID: 0}
 --- !u!114 &6557056368625621804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +160,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5203992925575434892}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

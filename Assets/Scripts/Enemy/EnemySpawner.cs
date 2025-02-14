@@ -1,71 +1,104 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
-    
-   public static int waveNumber = 0;
-    [SerializeField] float timeBetweenWaves = 5f;
-    [SerializeField] GameObject enemyPrefab;
-    [SerializeField] Transform spawnPoint;
-    [SerializeField] float timeBetweenEnemies = 3;
-    [SerializeField] int enemiesPerWave = 15;
-    private EnemyMovement enemyMovement;
-    bool isRoundGoingOn = false;
-   public event System.Action<int> OnWaveEnded;
-   
-    List<EnemyMovement> enemies = new List<EnemyMovement>();
-    private void OnEnable()
+    public GameObject enemyPrefab;
+    public Transform spawnPoint;
+    public int enemiesPerWave = 5;
+    public float timeBetweenEnemies = 1f;
+    public float timeBetweenWaves = 5f;
+    public int MaxWaveNumber = 10;
+
+    public Sprite[] enemySprites; // Assign in Inspector
+
+    public static int waveNumber = 1;
+    private bool isRoundGoingOn = false;
+    private float spawnTimer = 0f;
+    private float waveTimer = 0f;
+    private int spawnedEnemies = 0;
+    public static event System.Action<int> OnWaveEnded;
+    private List<EnemyMovement> enemies = new List<EnemyMovement>();
+
+    private void Start()
     {
-        
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(SpawnRoutine());
-        OnWaveEnded += CoinsManager.instance.CoinsOnEnd;
+        StartWave();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public static int GetWaveCount()
+    public int GetCurrentWave()
     {
         return waveNumber;
     }
-  
-    private IEnumerator SpawnRoutine()
+
+    private void Update()
     {
-        isRoundGoingOn = true;
-        while (isRoundGoingOn)
+        if (GameManager.Instance.isGamePasued || isRoundGoingOn == false)
+            return;
+
+        if (spawnedEnemies < enemiesPerWave)
         {
+            spawnTimer += Time.deltaTime;
 
-            for (int i = 0; i < enemiesPerWave; i++)
+            if (spawnTimer >= timeBetweenEnemies)
             {
-                GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-                enemyMovement = enemy.GetComponent<EnemyMovement>();
-                enemies.Add(enemyMovement);
-                isRoundGoingOn = true;
-                yield return new WaitForSeconds(timeBetweenEnemies);
+                spawnTimer = 0f; // Reset spawn timer
+                SpawnEnemy();
             }
-
-            yield return new WaitForSeconds(timeBetweenWaves);
-            OnWaveEnded?.Invoke(waveNumber);
-            waveNumber++;
-            
-            if (waveNumber == 10)
-            {
-                isRoundGoingOn = false;
-                yield return null;
-            }
-
         }
+        else
+        {
+            waveTimer += Time.deltaTime;
 
-       
-       
+            if (waveTimer >= timeBetweenWaves)
+            {
+                waveTimer = 0f; // Reset wave timer
+                waveNumber++;
 
+                OnWaveEnded?.Invoke(waveNumber);
+
+                if (waveNumber >= MaxWaveNumber)
+                {
+                    isRoundGoingOn = false;
+                }
+                else
+                {
+                    spawnedEnemies = 0; // Reset for next wave
+                }
+            }
+        }
+    }
+
+    public void StartWave()
+    {
+        if (!isRoundGoingOn)
+        {
+            isRoundGoingOn = true;
+            waveNumber = 0;
+            spawnedEnemies = 0;
+            spawnTimer = 0f;
+            waveTimer = 0f;
+        }
+    }
+
+    private void SpawnEnemy()
+    {
+        GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+        EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
+        enemies.Add(enemyMovement);
+        spawnedEnemies++;
+
+        // Assign the correct sprite based on the wave number
+        SpriteRenderer enemyRenderer = enemy.GetComponent<SpriteRenderer>();
+        if (enemyRenderer != null)
+        {
+            enemyRenderer.sprite = GetEnemySpriteForWave(waveNumber);
+            enemyRenderer.color = Color.red;
+        }
+    }
+
+    private Sprite GetEnemySpriteForWave(int wave)
+    {
+        int spriteIndex = (wave) % 6; // Cycle through 6 sprites
+        return enemySprites[spriteIndex];
     }
 }

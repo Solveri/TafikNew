@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 9096698093213754933}
   m_Layer: 0
   m_Name: Mother
-  m_TagString: Tower
+  m_TagString: Mother
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567475204115567999}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e36fe4351e6e7c46bfce942824914b2, type: 3}
   m_Name: 
@@ -152,7 +152,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.8958161, y: 2.7951927}
+  m_Offset: {x: -0.04572773, y: 3.0842223}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.47086093, y: 0.24568792}
@@ -163,7 +163,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.451613, y: 9.67742}
+  m_Size: {x: 3.9353514, y: 4.542885}
   m_EdgeRadius: 0
 --- !u!114 &-73873659799966275
 MonoBehaviour:
@@ -182,11 +182,11 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  damage: 3
+  spriteRenderer: {fileID: 0}
   currentPlot: {fileID: 0}
   faction: 0
   ability: {fileID: 9096698093213754933}
-  star: {fileID: 0}
+  StarLevel: 1
   projectilePrefab: {fileID: 0}
   abilityBar: {fileID: 2017581637004161694}
   beamObject: {fileID: 2469300235388775467, guid: 4c9b587f35948a445853b933cfdec366, type: 3}

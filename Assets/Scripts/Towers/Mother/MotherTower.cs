@@ -25,7 +25,7 @@ public class MotherTower : Tower
         ability.requrieProjectileCount = 10;
         if (beamObject != null)
         {
-            beamObject = Instantiate(beamObject, transform.position, Quaternion.identity);
+            beamObject = Instantiate(beamObject, transform.position, Quaternion.identity,this.transform);
             beamObject.SetActive(false); // Hide initially
              spriteWidth = beamObject.GetComponent<SpriteRenderer>().bounds.size.x;
         }

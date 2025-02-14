@@ -18,7 +18,6 @@ public class EnemyHealth : MonoBehaviour,IDamageable
         if (health <= 0)
         {
             health = 0;
-            
             OnDeath?.Invoke();
             Destroy(this.gameObject);
         }
