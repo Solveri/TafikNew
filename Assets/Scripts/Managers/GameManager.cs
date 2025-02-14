@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public bool isGamePasued;
     public bool isGameOver;
-
+    [SerializeField] public GameObject prefabPop; // Ensure this is assigned in the Inspector
     private void Awake()
     {
         if(Instance == null)
@@ -33,5 +33,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+    public void Restart()
+    {
+       //enemySpawer.start wavw
+       //need to rest the timer and wave counter
+       // need to rest the coins
+       //need to clear the bench and plots
     }
 }

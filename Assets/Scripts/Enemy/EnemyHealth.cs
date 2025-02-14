@@ -15,6 +15,8 @@ public class EnemyHealth : MonoBehaviour,IDamageable
     {
         OnDamageTaken?.Invoke(Damage);
         health -= Damage;
+      DamagePopUp dmg = DamagePopUp.Create(this.gameObject.transform.position,(int)Damage);
+        
         if (health <= 0)
         {
             health = 0;
