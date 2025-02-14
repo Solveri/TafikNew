@@ -6,14 +6,16 @@ public class Plot : MonoBehaviour
 {
     public bool isOccupied;
     public Tower occupier;
-
+    Color original;
     public SpriteRenderer spriteRenderer;
 
+    bool isHovered = false;
     public static event System.Action<Plot> OnPlotClicked;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        original = spriteRenderer.color;
         isOccupied = false;
     }
     private void Start()
@@ -27,13 +29,42 @@ public class Plot : MonoBehaviour
             if (LevelManager.instance.isHoldingImage)
             {
                 spriteRenderer.enabled = true;
+                if (isHovered)
+                {
+                    spriteRenderer.color = Color.white;
+                }
+                else
+                {
+                    spriteRenderer.color = original;
+                }
+                
+                
             }
             else
             {
+                
                 spriteRenderer.enabled = false;
             }
+            //if (isHovered)
+            //{
+            //    spriteRenderer.enabled = true;
+            //    spriteRenderer.color = Color.white;
+            //}
+            //else
+            //{
+            //    spriteRenderer.color = original;
+            //    spriteRenderer.enabled = false;
+            //}
         }
         
+    }
+    private void OnMouseEnter()
+    {
+        isHovered = true;
+    }
+    private void OnMouseExit()
+    {
+        isHovered = false;
     }
     private void OnMouseDown()
     {
