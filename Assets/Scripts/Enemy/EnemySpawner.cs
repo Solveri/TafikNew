@@ -20,6 +20,10 @@ public class EnemySpawner : MonoBehaviour
     public static event System.Action<int> OnWaveEnded;
     private List<EnemyMovement> enemies = new List<EnemyMovement>();
 
+    private void OnEnable()
+    {
+       
+    }
     private void Start()
     {
         StartWave();
@@ -53,7 +57,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 waveTimer = 0f; // Reset wave timer
                 waveNumber++;
-
+                CoinsManager.instance.AddCoins(15);
                 OnWaveEnded?.Invoke(waveNumber);
 
                 if (waveNumber >= MaxWaveNumber)

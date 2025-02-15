@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7911543365215053709}
   m_Layer: 5
   m_Name: Baby Image
-  m_TagString: Untagged
+  m_TagString: Baby
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

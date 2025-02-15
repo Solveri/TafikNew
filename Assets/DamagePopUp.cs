@@ -23,7 +23,7 @@ public class DamagePopUp : MonoBehaviour
     {
         textMesh.SetText(damageAmount.ToString());
         textColor = textMesh.color;
-        dissappearTimer = 1f;
+        dissappearTimer = 0.3f;
     }
     private float dissappearTimer;
     private Color textColor;
@@ -32,13 +32,17 @@ public class DamagePopUp : MonoBehaviour
     
     private void Update()
     {
-        float moveYSpeed = 20f;
+        if (GameManager.Instance.isGamePasued)
+        {
+            return;
+        }
+        float moveYSpeed = 5f;
         transform.position += new Vector3(0, moveYSpeed) * Time.deltaTime;
 
         dissappearTimer -= Time.deltaTime;
         if (dissappearTimer<0)
         {
-            float disappaerSpeed = 3f;
+            float disappaerSpeed = 5f;
             textColor.a -= disappaerSpeed * Time.deltaTime;
             textMesh.color = textColor;
             if(textColor.a < 0)

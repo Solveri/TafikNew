@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 364258890903955783}
   m_Layer: 5
   m_Name: Mom
-  m_TagString: Untagged
+  m_TagString: Mother
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

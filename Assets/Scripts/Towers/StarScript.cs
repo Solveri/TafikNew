@@ -20,7 +20,7 @@ public class StarScript : MonoBehaviour
     }
     public bool TryMergeTowers(StarScript otherTower)
     {
-        if (StarLevel != MAX_STAR_LEVEL && otherTower.StarLevel == StarLevel)
+        if (StarLevel != MAX_STAR_LEVEL && otherTower.StarLevel == StarLevel && otherTower.CompareTag(this.transform.tag))
         {
             StarLevel++;
             Debug.Log(StarLevel);
